@@ -1,0 +1,9 @@
+node_modules/
+/kin.mjs
+*.jsonl
+.env
+.env.*
+.DS_Store
+Thumbs.db
+# Real journals never belong here (sample/ is fictional).
+private/

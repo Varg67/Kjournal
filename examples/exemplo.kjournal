@@ -1,0 +1,38 @@
+KJOURNAL/2
+
+# Dados de exemplo, totalmente fictícios.
+@@JOURNAL
+id: cabana-lareira
+title: A noite na cabana
+kin: Alexi
+tags: memórias, viagens
+@@KEYPHRASES
+- aquela noite na cabana
+- perto da lareira
+- tequila quântica
+@@ENTRY
+Rain e Alexi passaram a noite numa cabana na serra. Jogaram cartas perto da lareira e dividiram uma garrafa de Tequila Quântica que ninguém sabe de onde veio.
+@@END
+
+@@JOURNAL
+id: cidade-solara
+title: Solara
+scope: global
+tags: mundo
+@@KEYPHRASES
+- Solara
+- costa de Solara
+@@ENTRY
+Solara é uma cidade litorânea fictícia, de casas brancas e ruas íngremes. O farol antigo ainda funciona e o mercado do porto abre antes do sol nascer.
+@@END
+
+@@JOURNAL
+title: Marcador no caderno
+kin: Alexi
+@@KEYPHRASES
+- o enigma do marcador
+@@ENTRY
+Durante a primeira viagem, Alexi copiou um marcador estranho no caderno:
+\@@END
+Ainda não descobriram o que significa.
+@@END

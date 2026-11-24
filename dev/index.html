@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Journal · dev harness</title>
+  <link rel="stylesheet" href="harness.css">
+</head>
+<body>
+  <div class="frame-wrap">
+    <!-- sandboxed like Kindroid's locked frame: scripts run, but the page has an opaque origin and no storage -->
+    <iframe id="screen" title="Journal screen" sandbox="allow-scripts allow-forms" src="../screen/index.html"></iframe>
+  </div>
+  <aside class="controls">
+    <h1>Journal harness</h1>
+    <p class="note">The real screen in a 390-point frame. This page answers its messages (<code>kins</code>, <code>files.read</code>, <code>files.write</code>) as the guide describes, and runs the real <code>run/program.js</code> for the Kin's actions.</p>
+
+    <section>
+      <h2>Kins attached</h2>
+      <div id="kins"></div>
+      <label class="row">Opened from the chat of
+        <select id="current"><option value="">(none)</option></select></label>
+      <button id="send-kins" type="button">Send the Kin list again</button>
+    </section>
+
+    <section>
+      <h2>The Kin uses an action</h2>
+      <label class="row">Kin <select id="act-kin"></select></label>
+      <label>save_journal_entry: title <input id="act-title" value="Biscuit the dog"></label>
+      <label>entry <textarea id="act-entry" rows="3">Biscuit is the caramel mutt Alexi adopted last winter. He steals socks.</textarea></label>
+      <label>keyphrases (comma-separated) <input id="act-phrases" value="Biscuit, our dog"></label>
+      <button id="act-save" type="button">Run save_journal_entry</button>
+      <label>read_journal: query <input id="act-query" value="Biscuit"></label>
+      <button id="act-read" type="button">Run read_journal</button>
+      <pre id="act-out" class="out"></pre>
+    </section>
+
+    <section>
+      <h2>Files of the program</h2>
+      <div class="row">
+        <button id="load-sample" type="button">Load sample/</button>
+        <button id="clear" type="button">Clear all</button>
+        <label><input id="fail" type="checkbox"> Writes fail</label>
+      </div>
+      <div id="files"></div>
+    </section>
+
+    <section>
+      <h2>Messages</h2>
+      <pre id="log" class="out"></pre>
+    </section>
+  </aside>
+  <script type="module" src="harness.js"></script>
+</body>
+</html>

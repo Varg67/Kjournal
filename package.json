@@ -1,0 +1,19 @@
+{
+  "name": "kjournal",
+  "version": "1.0.0",
+  "description": "Kindroid app: write, organize and test your Kins' Journal Entries; the Kin can draft entries in chat.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node scripts/build-screen.mjs && node scripts/build-sample.mjs && node scripts/build-install.mjs",
+    "build:check": "node scripts/build-screen.mjs --check && node scripts/build-sample.mjs --check && node scripts/build-install.mjs --check",
+    "test": "node --test \"tests/*.test.js\"",
+    "test:e2e": "node tests/e2e/screen.cjs",
+    "try": "node scripts/try-run.mjs",
+    "install-prompt": "node scripts/build-install.mjs --prompt"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "kin": 1,
+  "name": "Journal",
+  "purpose": "Write, organize and test your Kins' Journal Entries before adding them in Kindroid. Your Kin can also draft entries in chat for you to review.",
+  "run": {
+    "entry": "node main.js",
+    "timeout": "1m"
+  },
+  "screens": [
+    {
+      "slot": "panel",
+      "entry": "screen/index.html",
+      "title": "Journal"
+    }
+  ],
+  "actions": [
+    {
+      "name": "save_journal_entry",
+      "description": "Use when they ask you to write something down in your journal, or to remember a person, place, event or fact as a Journal Entry. It saves a draft they review in the Journal app.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "A short name: the person, place or event." },
+          "entry": { "type": "string", "description": "The entry: concise, third person, the facts you should recall later." },
+          "keyphrases": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "maxItems": 8,
+            "description": "1 to 8 specific phrases (2 to 50 characters) they would type when this matters, like a name or 'the cabin trip'. No common words."
+          },
+          "global": { "type": "boolean", "description": "true only for world lore shared by all Kins, not about you." }
+        },
+        "required": ["entry", "keyphrases"]
+      },
+      "by": ["kin"]
+    },
+    {
+      "name": "read_journal",
+      "description": "Use when they ask what your journal says about someone or something, or whether there is already a journal entry for it.",
+      "input": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "The person, place, event or words to look up." }
+        },
+        "required": ["query"]
+      },
+      "by": ["kin"]
+    }
+  ],
+  "links": ["exports/journal.kjournal", "exports/journal.md"]
+}

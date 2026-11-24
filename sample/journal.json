@@ -1,0 +1,82 @@
+{
+ "schema": "kjournal.workshop",
+ "version": 1,
+ "updatedAt": "2026-11-24T18:00:00.000Z",
+ "entries": [
+  {
+   "id": "sample-4",
+   "title": "Quinn's first exhibition",
+   "scope": "kin",
+   "kinId": "sample-quinn",
+   "content": "Quinn showed photographs for the first time in a small gallery downtown. Two sold, and she keeps the invitation in her wallet.",
+   "keyphrases": [
+    "the exhibition",
+    "gallery downtown"
+   ],
+   "tags": [],
+   "status": "draft",
+   "createdAt": "2026-11-24T18:00:00.000Z",
+   "updatedAt": "2026-11-24T18:00:00.000Z",
+   "author": "kin"
+  },
+  {
+   "id": "sample-2",
+   "title": "Marta, the older sister",
+   "scope": "kin",
+   "kinId": "sample-alexi",
+   "content": "Marta is Alexi's older sister. She lives in Lisbon, calls every Sunday and still uses Alexi's childhood nickname.",
+   "keyphrases": [
+    "Marta",
+    "my sister",
+    "Sunday call"
+   ],
+   "tags": [
+    "family"
+   ],
+   "status": "ready",
+   "createdAt": "2026-11-23T18:00:00.000Z",
+   "updatedAt": "2026-11-23T18:00:00.000Z"
+  },
+  {
+   "id": "sample-1",
+   "title": "The night at the cabin",
+   "scope": "kin",
+   "kinId": "sample-alexi",
+   "content": "Rain and Alexi spent a night at a mountain cabin. They played cards by the fireplace and shared a bottle of Quantum Tequila nobody remembers buying.",
+   "keyphrases": [
+    "night at the cabin",
+    "by the fireplace",
+    "quantum tequila"
+   ],
+   "tags": [
+    "memories"
+   ],
+   "status": "inKindroid",
+   "createdAt": "2026-11-22T18:00:00.000Z",
+   "updatedAt": "2026-11-22T18:00:00.000Z",
+   "markedInKindroidAt": "2026-11-22T19:00:00.000Z"
+  },
+  {
+   "id": "sample-3",
+   "title": "The Solara lighthouse",
+   "scope": "global",
+   "kinId": null,
+   "content": "Solara is a fictional seaside town of white houses. Its old lighthouse still works, and the harbour market opens before sunrise.",
+   "keyphrases": [
+    "Solara",
+    "Solara lighthouse"
+   ],
+   "tags": [
+    "world"
+   ],
+   "status": "outdated",
+   "createdAt": "2026-11-21T18:00:00.000Z",
+   "updatedAt": "2026-11-21T18:00:00.000Z"
+  }
+ ],
+ "deleted": {},
+ "kinNames": {
+  "sample-alexi": "Alexi",
+  "sample-quinn": "Quinn"
+ }
+}

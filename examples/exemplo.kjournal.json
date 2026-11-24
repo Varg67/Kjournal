@@ -1,0 +1,22 @@
+{
+  "format": "kjournal",
+  "version": 2,
+  "entries": [
+    {
+      "id": "cabana-lareira",
+      "title": "A noite na cabana",
+      "kin": "Alexi",
+      "tags": ["memórias", "viagens"],
+      "entry": "Rain e Alexi passaram a noite numa cabana na serra. Jogaram cartas perto da lareira e dividiram uma garrafa de Tequila Quântica que ninguém sabe de onde veio.",
+      "keyphrases": ["aquela noite na cabana", "perto da lareira", "tequila quântica"]
+    },
+    {
+      "id": "cidade-solara",
+      "title": "Solara",
+      "scope": "global",
+      "tags": ["mundo"],
+      "entry": "Solara é uma cidade litorânea fictícia, de casas brancas e ruas íngremes. O farol antigo ainda funciona e o mercado do porto abre antes do sol nascer.",
+      "keyphrases": ["Solara", "costa de Solara"]
+    }
+  ]
+}
