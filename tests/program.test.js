@@ -19,7 +19,7 @@ test('save_journal_entry writes a Kin draft to kin-drafts.json, never journal.js
 
 test('global entries; invalid ones fail with the reason', async () => {
   const kin = memoryKin();
-  assert.equal((await runProgram({ event: save({ title: 'Solara', entry: 'Solara is a town.', keyphrases: ['Solara'], global: true }), kin })).ok, true);
+  assert.equal((await runProgram({ event: save({ title: 'Solara', entry: 'Solara is a seaside town in the south.', keyphrases: ['Solara'], global: true }), kin })).ok, true);
   assert.equal(parseDrafts(kin.files.get(DRAFTS_FILE))[0].kinId, null);
   const bad = await runProgram({ event: save({ entry: '', keyphrases: [] }), kin });
   assert.equal(bad.ok, false);
@@ -36,7 +36,7 @@ test('the same text is not saved twice; drafts already taken in are dropped', as
 
 test('a damaged journal.json stops the run without writing anything', async () => {
   const kin = memoryKin({ [JOURNAL_FILE]: '{broken' });
-  await assert.rejects(runProgram({ event: save({ entry: 'Text here.', keyphrases: ['abc'] }), kin }));
+  await assert.rejects(runProgram({ event: save({ entry: 'Some text that is long enough.', keyphrases: ['abc'] }), kin }));
   assert.ok(!kin.files.has(DRAFTS_FILE));
 });
 

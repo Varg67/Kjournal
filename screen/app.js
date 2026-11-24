@@ -482,7 +482,7 @@ __def("src/screen/views/editor.js", function () {
 const { LIMITS } = __req("src/core/constants.js");
 const { allowedStatuses } = __req("src/core/entry.js");
 const { entryIssues } = __req("src/core/library.js");
-const { validateEntry } = __req("src/core/rules.js");
+const { contentLimit, validateEntry } = __req("src/core/rules.js");
 const { comparisonForm, countChars, normalizeKeyphrase, normalizeTag } = __req("src/core/text.js");
 const { kinName } = __req("src/core/document.js");
 const { h, fill } = __req("src/screen/dom.js");
@@ -572,8 +572,8 @@ function renderEditor(ctx, id) {
     statusHint.textContent = STATUS_HINT[e.status];
 
     const { chars } = validateEntry(e);
-    count.textContent = `${chars} characters`;
-    const pct = Math.min(100, (chars / LIMITS.contentComfortChars) * 100);
+    count.textContent = `${chars} / ${contentLimit(e)}`;
+    const pct = Math.min(100, (chars / contentLimit(e)) * 100);
     comfort.firstChild.style.width = `${pct}%`;
     comfort.firstChild.className = pct >= 100 ? 'over' : '';
 

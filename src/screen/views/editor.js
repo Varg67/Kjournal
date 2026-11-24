@@ -3,7 +3,7 @@
 import { LIMITS } from '../../core/constants.js';
 import { allowedStatuses } from '../../core/entry.js';
 import { entryIssues } from '../../core/library.js';
-import { validateEntry } from '../../core/rules.js';
+import { contentLimit, validateEntry } from '../../core/rules.js';
 import { comparisonForm, countChars, normalizeKeyphrase, normalizeTag } from '../../core/text.js';
 import { kinName } from '../../core/document.js';
 import { h, fill } from '../dom.js';
@@ -95,8 +95,8 @@ export function renderEditor(ctx, id) {
     statusHint.textContent = STATUS_HINT[e.status];
 
     const { chars } = validateEntry(e);
-    count.textContent = `${chars} characters`;
-    const pct = Math.min(100, (chars / LIMITS.contentComfortChars) * 100);
+    count.textContent = `${chars} / ${contentLimit(e)}`;
+    const pct = Math.min(100, (chars / contentLimit(e)) * 100);
     comfort.firstChild.style.width = `${pct}%`;
     comfort.firstChild.className = pct >= 100 ? 'over' : '';
 

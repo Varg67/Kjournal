@@ -14,8 +14,13 @@ export const LIMITS = {
   keyphraseMaxChars: 50,
   entriesPerType: 500,
   recalledPerMessagePerType: 3,
-  contentComfortChars: 1000, // guidance only: every recalled entry takes chat context
+  contentMinChars: 20, // Kindroid: an entry's text is 20 to 500 characters
+  contentMaxChars: 500,
+  captionMaxChars: 300, // with a photo, the text becomes an optional caption of up to 300 characters
   titleMaxChars: 120,
 };
 
 export const STATUSES = ['draft', 'ready', 'inKindroid', 'outdated'];
+
+// What an entry is about. Each category has its own template (src/core/templates/).
+export const CATEGORIES = ['places', 'items', 'people', 'relationships', 'history'];

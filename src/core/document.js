@@ -2,7 +2,7 @@
 // computer) are reconciled with mergeJournals: the newest edit of each entry wins, and deletions are kept as dated
 // tombstones so a stale copy cannot bring an entry back. The Kin's drafts come from kin-drafts.json, which only the
 // run writes; the screen takes in the ones it has never seen.
-import { STATUSES } from './constants.js';
+import { CATEGORIES, STATUSES } from './constants.js';
 import { isRecord, isTime } from './text.js';
 
 export const JOURNAL_SCHEMA = 'kjournal.workshop';
@@ -37,6 +37,8 @@ export function parseEntry(value) {
   };
   if (isTime(value.markedInKindroidAt)) entry.markedInKindroidAt = value.markedInKindroidAt;
   if (value.author === 'kin') entry.author = 'kin';
+  if (value.photo === true) entry.photo = true;
+  if (CATEGORIES.includes(value.category)) entry.category = value.category;
   return entry;
 }
 

@@ -28,10 +28,18 @@ test('current keyphrase limits: 1-8, 2-50 characters, no repeats', () => {
   assert.ok(codes(entry({ keyphrases: ['Cabin', ' cabin '] })).includes('keyphrase_duplicate'));
 });
 
-test('long text and common words only warn', () => {
-  const r = validateEntry(entry({ content: 'a'.repeat(LIMITS.contentComfortChars + 1), keyphrases: ['casa'], kinId: null }));
+test('text is 20 to 500 characters; with a photo, an optional caption of up to 300', () => {
+  assert.ok(codes(entry({ content: 'Too short.' })).includes('content_too_short'));
+  assert.ok(codes(entry({ content: 'a'.repeat(LIMITS.contentMaxChars + 1) })).includes('content_too_long'));
+  assert.equal(validateEntry(entry({ content: 'a'.repeat(LIMITS.contentMaxChars) })).valid, true);
+  assert.equal(validateEntry(entry({ photo: true, content: '' })).valid, true);
+  assert.ok(codes(entry({ photo: true, content: 'a'.repeat(LIMITS.captionMaxChars + 1) })).includes('caption_too_long'));
+});
+
+test('common words and a missing Kin only warn', () => {
+  const r = validateEntry(entry({ keyphrases: ['casa'], kinId: null }));
   assert.equal(r.valid, true);
-  for (const c of ['content_long', 'keyphrase_generic', 'kin_missing']) assert.ok(r.issues.some((x) => x.code === c), c);
+  for (const c of ['keyphrase_generic', 'kin_missing']) assert.ok(r.issues.some((x) => x.code === c), c);
 });
 
 test('cleanKeyphrases trims, collapses and drops repeats', () => {

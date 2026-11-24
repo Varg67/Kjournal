@@ -14,6 +14,9 @@ const GENERIC = new Set([
 
 export const isGenericKeyphrase = (keyphrase) => GENERIC.has(comparisonForm(keyphrase));
 
+/** The most text Kindroid keeps for this entry: a caption with a photo, the full text without. */
+export const contentLimit = (entry) => (entry.photo ? LIMITS.captionMaxChars : LIMITS.contentMaxChars);
+
 /**
  * Issues of one entry: { severity: 'error'|'warning', field, code, message, index? }. Errors block "ready" and
  * "in Kindroid"; warnings never block. Cross-entry checks are in collisions.js.
@@ -26,8 +29,11 @@ export function validateEntry(entry) {
   if (!entry.title.trim()) add('warning', 'title', 'title_missing', 'No title yet: give it a name so you can find it later.');
   else if (countChars(entry.title.trim()) > LIMITS.titleMaxChars) add('warning', 'title', 'title_long', `The title is over ${LIMITS.titleMaxChars} characters.`);
 
-  if (chars === 0) add('error', 'content', 'content_empty', 'The entry has no text.');
-  else if (chars > LIMITS.contentComfortChars) add('warning', 'content', 'content_long', `Over ${LIMITS.contentComfortChars} characters. Every recalled entry takes chat context: consider splitting it.`);
+  if (entry.photo) {
+    if (chars > LIMITS.captionMaxChars) add('error', 'content', 'caption_too_long', `With a photo, Kindroid keeps a caption of at most ${LIMITS.captionMaxChars} characters.`);
+  } else if (chars === 0) add('error', 'content', 'content_empty', 'The entry has no text.');
+  else if (chars < LIMITS.contentMinChars) add('error', 'content', 'content_too_short', `Kindroid needs at least ${LIMITS.contentMinChars} characters of text.`);
+  else if (chars > LIMITS.contentMaxChars) add('error', 'content', 'content_too_long', `Kindroid keeps at most ${LIMITS.contentMaxChars} characters of text.`);
 
   if (entry.scope === 'kin' && !entry.kinId) add('warning', 'kin', 'kin_missing', 'This entry is not assigned to a Kin.');
 

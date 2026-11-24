@@ -1,6 +1,7 @@
 // Creating and changing one entry. An entry:
 //   { id, title, scope: 'kin'|'global', kinId: string|null, content, keyphrases: string[], tags: string[],
-//     status: 'draft'|'ready'|'inKindroid'|'outdated', createdAt, updatedAt, markedInKindroidAt?, author?: 'kin' }
+//     status: 'draft'|'ready'|'inKindroid'|'outdated', createdAt, updatedAt, markedInKindroidAt?, author?: 'kin',
+//     category?: one of CATEGORIES, photo?: true (the entry has a photo in Kindroid; its text is then a caption) }
 // "inKindroid" is set by the person after pasting the entry into the Kin's Journal in Kindroid; this app never
 // writes to Kindroid's journal itself.
 import { validateEntry } from './rules.js';
@@ -20,7 +21,7 @@ const phrasesKey = (list) => list.map((k) => comparisonForm(normalizeKeyphrase(k
 export function applyEdit(entry, patch, now = new Date()) {
   const next = { ...entry, ...patch, id: entry.id, updatedAt: nextTime(entry.updatedAt, now) };
   const visible = next.content.trim() !== entry.content.trim() || phrasesKey(next.keyphrases) !== phrasesKey(entry.keyphrases)
-    || next.scope !== entry.scope || next.kinId !== entry.kinId;
+    || next.scope !== entry.scope || next.kinId !== entry.kinId || Boolean(next.photo) !== Boolean(entry.photo);
   if (entry.status === 'inKindroid' && visible && patch.status === undefined) next.status = 'outdated';
   return next;
 }

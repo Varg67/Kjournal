@@ -31,5 +31,9 @@ npm start & npm run test:e2e   # the screen in Chromium
 - One writer per file: the screen writes `journal.json`; the run writes `kin-drafts.json`.
 - Journal Entry rules live only in `src/core/rules.js` and `src/core/constants.js`.
 - Version: `APP_VERSION` in `src/core/constants.js` equals `version` in `package.json`; bump both together.
-- Language: code, comments, the screen and `README.md` in English; documents for the user (`COMO-INSTALAR.md`,
-  `docs/`) in Portuguese; prompts to the Kin and to the Workshop agent in English.
+- Language: everything in the repository is in English: code, comments, the screen, `README.md`, `docs/`, the
+  install guide, and prompts to the Kin and to the Workshop agent. (Older documents still in Portuguese are being
+  translated.)
+- Templates (`src/core/templates/`): one per category. A template never adds a fact the person did not give, writes
+  names instead of I/you, and fits the budget by leaving out whole sentences. Every problem found in a template
+  becomes a test.
